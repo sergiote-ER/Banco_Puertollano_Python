@@ -81,8 +81,6 @@ class Cliente:
         print("==================================================")
 
 
-
-
 def pedirNumeroCliente() -> str:
     while True:
         numero = input("\nIngrese el número de cliente (6 dígitos, ej: 432344): ").strip()
@@ -93,6 +91,7 @@ def pedirNumeroCliente() -> str:
         print(" Formato incorrecto. Debe tener exactamente 6 dígitos numéricos.")
         registrarLog(mensaje)
 
+
 def registrarLog(mensaje: str):
     tiempoExacto = dt.now().strftime("%Y-%m-%d %H:%M:%S")
     linea = f"[{tiempoExacto}] {mensaje}\n"
@@ -101,6 +100,7 @@ def registrarLog(mensaje: str):
             f.write(linea)
     except Exception as e:
         print(f"Error al escribir en el log: {e}")
+
 
 def menu():
     print("\n--------------------------------------------------------------")
@@ -111,14 +111,10 @@ def menu():
     print("3. Salir")
     print("--------------------------------------------------------------")
 
-opcion = int(input("Escoge una opcion: "))
-while opcion != 0:
-    pass
 
 def main():
     registrarLog("INICIO: Aplicación Banco Puertollano 2026 iniciada.")
     clienteActual = None
-
     while True:
         try:
             menu()
@@ -143,6 +139,7 @@ def main():
                 case 3:
                     print("\nGracias por usar los servicios de Banco Puertollano 2026. ¡Hasta pronto!")
                     registrarLog("FIN: La aplicación finalizó correctamente por el usuario.")
+                    break
                 case _:
                     mensaje = f"ADVERTENCIA: Opción de menú no válida introducida ('{opcion}')."
                     print("\n Opción no válida. Por favor, introduzca 1, 2 o 3.")
@@ -152,6 +149,7 @@ def main():
             mensajeCritico = f"CRÍTICO: Excepción no controlada en el bucle principal: {e}"
             print("\n Ha ocurrido un error inesperado. Reintente por favor.")
             registrarLog(mensajeCritico)
+
 
 if __name__ == "__main__":
     main()
